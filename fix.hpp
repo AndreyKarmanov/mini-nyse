@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -251,28 +252,23 @@ namespace fix {
 } // namespace fix
 
 // Example usage:
-void fix_example() {
-    // Create a new order
-    auto new_order = fix::FixMessageFactory::create_new_order_single(
-        "ORD123", "APPL", fix::Sides::Buy, 1000000, 100, fix::OrderTypes::Limit
-    );
+// void fix_example() {
+//     // Create a new order
+//     auto new_order = fix::FixMessageFactory::create_new_order_single(
+//         "ORD123", "APPL", fix::Sides::Buy, 1000000, 100, fix::OrderTypes::Limit
+//     );
 
-    // Serialize and parse (showing both wire and human readable formats)
-    std::string wire_format = new_order.serialize();
-    std::string human_format = new_order.serialize(true);
+//     // Serialize and parse (showing both wire and human readable formats)
+//     std::string wire_format = new_order.serialize();
+//     std::string human_format = new_order.serialize(true);
 
-    // Parse back
-    auto parsed = fix::FixMessage::parse(wire_format);
+//     // Parse back
+//     auto parsed = fix::FixMessage::parse(wire_format);
 
-    // Access fields
-    std::cout << "ClOrdID: " << parsed.get_string(fix::Tags::ClOrdID) << '\n';
-    std::cout << "Symbol: " << parsed.get_string(fix::Tags::Symbol) << '\n';
-    std::cout << "Side: " << parsed.get_char(fix::Tags::Side) << '\n';
-    std::cout << "OrderQty: " << parsed.get_quantity(fix::Tags::OrderQty) << '\n';
-    std::cout << "Price: " << fix::price_to_string(parsed.get_price(fix::Tags::Price)) << '\n';
-}
-
-int main() {
-    fix_example();
-    return 0;
-}
+//     // Access fields
+//     std::cout << "ClOrdID: " << parsed.get_string(fix::Tags::ClOrdID) << '\n';
+//     std::cout << "Symbol: " << parsed.get_string(fix::Tags::Symbol) << '\n';
+//     std::cout << "Side: " << parsed.get_char(fix::Tags::Side) << '\n';
+//     std::cout << "OrderQty: " << parsed.get_quantity(fix::Tags::OrderQty) << '\n';
+//     std::cout << "Price: " << fix::price_to_string(parsed.get_price(fix::Tags::Price)) << '\n';
+// }
